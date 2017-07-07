@@ -22,8 +22,15 @@ class DbSession(object):
     when performing database transactions.
     """
 
-    def __init__(self, database_path, user, password):
-        self.database_path = database_path
+    def __init__(self, path, user, password):
+        """
+        Constructor for DbSession.
+
+        :param path: the path to the database
+        :param user: the database user
+        :param password: the password of the database user
+        """
+        self.database_path = path
         self.user = user
         self.password = password
 

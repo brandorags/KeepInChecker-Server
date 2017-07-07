@@ -23,6 +23,10 @@ database_password = ''
 
 
 def initialize_constants():
+    """
+    Sets the global variables that are used as
+    constants throughout the application.
+    """
     global database_path
     global database_user
     global database_password

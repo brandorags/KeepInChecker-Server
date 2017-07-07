@@ -25,10 +25,19 @@ app = Flask(__name__)
 
 
 def init_server_config_objects():
+    """
+    Initializes the constants that represent the
+    values specified in server.cfg
+    """
     constants.initialize_constants()
 
 
 def init_database():
+    """
+    Initializes the connection to the database and
+    also creates the database tables if they don't
+    already exist.
+    """
     db_initializer = DbInitializer(constants.database_path,
                                    constants.database_user,
                                    constants.database_password)
