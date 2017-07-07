@@ -13,32 +13,29 @@
 # limitations under the License.
 
 
-from configparser import ConfigParser
+import constants
+
+from database.manager.user_manager import UserManager
+from database.db_initializer import DbInitializer
 from flask import Flask
 
 
 # global Flask object
 app = Flask(__name__)
 
-# global server config objects
-database_path = ''
-database_user = ''
-database_password = ''
-
 
 def init_server_config_objects():
-    global database_path
-    global database_user
-    global database_password
+    constants.initialize_constants()
 
-    config = ConfigParser()
-    config.read('../server.cfg')
 
-    database_path = config['database']['DATABASE_PATH']
-    database_user = config['database']['DATABASE_USER']
-    database_password = config['database']['DATABASE_PASSWORD']
+def init_database():
+    db_initializer = DbInitializer(constants.database_path,
+                                   constants.database_user,
+                                   constants.database_password)
+    db_initializer.create_tables_if_none_exist()
 
 
 if __name__ == '__main__':
     init_server_config_objects()
+    init_database()
     app.run(host='0.0.0.0')
