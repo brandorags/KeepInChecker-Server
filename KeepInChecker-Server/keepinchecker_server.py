@@ -38,9 +38,7 @@ def init_database():
     also creates the database tables if they don't
     already exist.
     """
-    db_initializer = DbInitializer(constants.database_path,
-                                   constants.database_user,
-                                   constants.database_password)
+    db_initializer = DbInitializer(constants.database_path)
     db_initializer.create_tables_if_none_exist()
 
 

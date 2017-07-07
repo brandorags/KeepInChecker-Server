@@ -16,15 +16,11 @@
 import sys
 sys.path.append('../..')
 
-from constants import database_path, database_user, database_password
+from constants import database_path
 from ..db_session import DbSession
 
 
 class UserManager(object):
 
     def __init__(self):
-        self.database_path = database_path
-        self.user = database_user
-        self.password = database_password
-
-        self.db = DbSession(database_path, database_user, database_password)
+        self.db = DbSession(database_path)

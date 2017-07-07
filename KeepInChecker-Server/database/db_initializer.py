@@ -22,16 +22,15 @@ class DbInitializer(object):
     that may not already exist.
     """
 
-    def __init__(self, database_path, user, password):
+    # TODO: refactor database_path to just path
+    def __init__(self, database_path):
         self.database_path = database_path
-        self.user = user
-        self.password = password
 
     def create_tables_if_none_exist(self):
         """
         Creates the tables for the database if they don't already exist.
         """
-        db = DbSession(self.database_path, self.user, self.password)
+        db = DbSession(self.database_path)
         db.execute('''CREATE TABLE IF NOT EXISTS "User" (
                                     `UserId` TEXT NOT NULL,
                                     `SecurityKey` TEXT NOT NULL,

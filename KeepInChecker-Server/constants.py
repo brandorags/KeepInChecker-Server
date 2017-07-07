@@ -18,8 +18,6 @@ from configparser import ConfigParser
 
 # global server config objects
 database_path = ''
-database_user = ''
-database_password = ''
 
 
 def initialize_constants():
@@ -28,12 +26,8 @@ def initialize_constants():
     constants throughout the application.
     """
     global database_path
-    global database_user
-    global database_password
 
     config = ConfigParser()
     config.read('../server.cfg')
 
     database_path = config['database']['DATABASE_PATH']
-    database_user = config['database']['DATABASE_USER']
-    database_password = config['database']['DATABASE_PASSWORD']
